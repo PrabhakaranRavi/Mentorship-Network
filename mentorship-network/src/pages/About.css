@@ -1,0 +1,37 @@
+/* Custom CSS for About Us component */
+
+/* Set background color for the container */
+.container {
+  background-color: #c0c0c0; /* Light gray background color */
+}
+
+/* Center align text inside the container */
+.container {
+  text-align: center;
+}
+
+/* Add some spacing between paragraphs */
+p {
+  margin-bottom: 1.5rem;
+}
+
+/* Style the blockquote */
+blockquote {
+  font-style: italic;
+  border-left: 5px solid #007bff; /* Blue border on the left */
+  margin: 0;
+  padding-left: 20px;
+}
+
+/* Style the citation in the blockquote */
+blockquote footer {
+  text-align: right;
+  font-size: 0.875rem; /* Reduce font size */
+  color: #6c757d; /* Gray color */
+}
+
+/* Increase font size and add margin-bottom to the last lead paragraph */
+.lead:last-child {
+  font-size: 1.25rem;
+  margin-bottom: 3rem;
+}
