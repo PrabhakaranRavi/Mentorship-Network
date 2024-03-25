@@ -29,26 +29,50 @@ const Register = () => {
     // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // Insert data into Supabase table
-        const { data, error } = await supabase.from('UserData').insert([
-            formData
-        ]);
-        if (error) {
-            console.error('Error inserting data:', error.message);
-            return;
+
+        const postalCode = formData.postal_code;
+        const mapQuestApiUrl = `https://www.mapquestapi.com/geocoding/v1/address?key=Cmjtd%7Cluur2108n1,7w=o5-gz8a&inFormat=kvp&outFormat=json&location=${postalCode}&thumbMaps=false`;
+
+        try {
+            const response = await fetch(mapQuestApiUrl);
+            const dataMap = await response.json();
+
+            if (dataMap.results && dataMap.results.length > 0) {
+                const location = dataMap.results[0].locations[0];
+                const { lat, lng } = location.latLng;
+
+                // Insert data into Supabase table along with latitude and longitude
+                const { data, error } = await supabase.from('UserData').insert([
+                    {
+                        ...formData,
+                        latitude: lat,
+                        longitude: lng
+                    }
+                ]);
+
+                if (error) {
+                    console.error('Error inserting data:', error.message);
+                    return;
+                }
+
+                console.log('Data inserted successfully:', data);
+                // Set registration status to true
+                setIsRegistered(true);
+                // Reset form fields after submission
+                setFormData({
+                    username: '',
+                    gmail: '',
+                    mobile_number: '',
+                    city: '',
+                    postal_code: '',
+                    linkedin_url: ''
+                });
+            } else {
+                console.error('Failed to fetch latitude and longitude coordinates from MapQuest API');
+            }
+        } catch (error) {
+            console.error('Error fetching latitude and longitude coordinates:', error.message);
         }
-        console.log('Data inserted successfully:', data);
-        // Set registration status to true
-        setIsRegistered(true);
-        // Reset form fields after submission
-        setFormData({
-            username: '',
-            gmail: '',
-            mobile_number: '',
-            city: '',
-            postal_code: '',
-            linkedin_url: ''
-        });
     };
 
     return (
