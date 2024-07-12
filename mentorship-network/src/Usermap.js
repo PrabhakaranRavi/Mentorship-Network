@@ -8,9 +8,12 @@ import { createClient } from '@supabase/supabase-js';
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+// import dotenv from 'dotenv';
+// dotenv.config();
 
-const supabaseUrl = process.env.SUPABASE_URL
-const supabaseKey = process.env.SUPABASE_KEY
+
+const supabaseUrl = process.env.REACT_APP_SUPABASE_URL
+const supabaseKey = process.env.REACT_APP_SUPABASE_KEY
 const supabase = createClient(supabaseUrl, supabaseKey)
 
 // create custom icon
