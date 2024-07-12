@@ -51,7 +51,7 @@ export default function UserMap() {
   }, []);
 
   return (
-    <MapContainer center={[9.939093, 78.121719]} zoom={10}>
+    <MapContainer center={[9.939093, 78.121719]} zoom={3}>
       {/* OPEN STREET MAPS TILES */}
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
