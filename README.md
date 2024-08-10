@@ -15,7 +15,7 @@ Welcome to my latest project, inspired by an unforgettable experience at a tech 
 
 ## Introduction
 
-This app was born out of a desire to add value to our communities, especially in regions like Madurai, where many are unaware of platforms like LinkedIn or tech communities. The goal is to bridge this gap by connecting individuals through a simple and intuitive interface.
+This app was born out of a desire to add value to our communities, especially in rural regions, where many are unaware of platforms like LinkedIn or tech communities. The goal is to bridge this gap by connecting individuals through a simple and intuitive interface.
 
 ## Inspiration
 
